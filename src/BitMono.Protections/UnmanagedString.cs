@@ -118,7 +118,10 @@ public class UnmanagedString : Protection
         }
         code = code.Concat(stringBytes);
 
-        var body = new NativeMethodBody(code.ToArray());
+        var body = new NativeMethodBody(method)
+        {
+            Code = code.ToArray()
+        };
         method.NativeMethodBody = body;
         return method;
     }
